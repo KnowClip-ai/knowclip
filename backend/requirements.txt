@@ -1,0 +1,23 @@
+# KnowClip 开源版后端依赖
+# 安装：pip install -r requirements.txt
+# 首次识别会自动从 ModelScope 下载 Paraformer 模型（约 1GB，缓存于 ~/.cache/modelscope）
+#
+# ffmpeg 需单独安装（导出与音频处理依赖）：brew install ffmpeg / winget install ffmpeg
+
+fastapi>=0.104
+uvicorn>=0.30
+httpx>=0.27
+pydantic>=2.5
+
+# 本地 ASR（funasr 会自动带上 torch/torchaudio/modelscope 等依赖）
+funasr>=1.1
+torch>=2.1
+torchaudio
+
+# 音频处理
+numpy
+librosa
+soundfile
+pydub
+# 缩略图尺寸探测
+Pillow

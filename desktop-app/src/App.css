@@ -1,0 +1,190 @@
+/* ========== 基础布局 ========== */
+html, body {
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f5f5f7;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* 精彩片段列表网格响应式布局 */
+.clip-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px 32px;
+  width: 100%;
+  align-items: start;
+}
+
+@media (min-width: 800px) {
+  .clip-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .clip-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1700px) {
+  .clip-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 2400px) {
+  .clip-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+
+
+h1 {
+  text-align: center;
+  color: #1d1d1f;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+/* ========== 按钮样式 ========== */
+button {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+/* ========== 动画定义 ========== */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 隐藏 number input 的上下调节箭头 */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* AI 思考中动效 */
+.thinking-wave {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: 8px;
+}
+
+.thinking-wave span {
+  display: inline-block;
+  width: 3px;
+  height: 12px;
+  background: #f5576c;
+  border-radius: 2px;
+  animation: thinkingWave 1s ease-in-out infinite;
+}
+
+.thinking-wave span:nth-child(2) { animation-delay: 0.1s; }
+.thinking-wave span:nth-child(3) { animation-delay: 0.2s; }
+.thinking-wave span:nth-child(4) { animation-delay: 0.3s; }
+
+@keyframes thinkingWave {
+  0%, 100% { height: 6px; opacity: 0.3; }
+  50% { height: 14px; opacity: 1; }
+}
+
+/* 强制所有复选框勾选颜色为粉色，避免 WebKit 重绘时丢失 */
+input[type='checkbox'] {
+  accent-color: #f5576c !important;
+}
+
+/* ========== 深度思考 Toggle Switch ========== */
+.thinking-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.thinking-toggle input {
+  display: none;
+}
+
+.thinking-toggle-slider {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: #D1D1D6;
+  border-radius: 24px;
+  transition: background 0.25s ease;
+  flex-shrink: 0;
+}
+
+.thinking-toggle-slider::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.25s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.thinking-toggle input:checked + .thinking-toggle-slider {
+  background: #f5576c;
+}
+
+.thinking-toggle input:checked + .thinking-toggle-slider::before {
+  transform: translateX(20px);
+}
+
+.thinking-toggle-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  transition: color 0.2s;
+}
+
+.thinking-toggle input:checked ~ .thinking-toggle-label {
+  color: #f5576c;
+}
+
+/* ========== 细条半透明滚动条（浅色主题）========== */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 3px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
